@@ -38,11 +38,8 @@ char	*ft_malloc_it(size_t size)
 
 int		ft_check_eof(char **line, int fd, int ret, char **str)
 {
-	if (ret == 0 && (str[fd] == NULL || str[fd][0] == '\0'))
-	{
-		*line = malloc(1);
-		**line = '\0';
-	}
+	*line = malloc(1);
+	**line = '\0';
 	return (0);
 }
 
