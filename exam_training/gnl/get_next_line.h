@@ -18,10 +18,5 @@
 #include <stddef.h>
 
 int         get_next_line(int fd, char **line);
-int         ft_fill_it(char **str, char **line, int ret, int fd);
-char        *ft_strjoin(char   *str, char *buff);
-int         ft_strlen(char *str);
-int         ft_strchr(char *str, char c);
-//char        *ft_strdup(char *str, int start, int len);
 
 #endif
