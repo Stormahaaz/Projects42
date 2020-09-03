@@ -1,0 +1,36 @@
+int         get_next_line(int fd, char **line)
+{
+    char	*str[255];
+	char	buff[BUFFER_SIZE + 1];
+	char	*tmp;
+	int		ret;
+
+	if (BUFFER_SIZE < 1 || fd < 0 || line == NULL)
+		return (-1);
+	while ((ret = read(fd, buff, BUFFER_SIZE)) > 0)
+	{
+		buff[ret] = '\0';
+		if (!str[fd])
+        {
+		getchar();
+            if (!(str[fd] = malloc(1)))
+                return (-1);
+            str[fd][0] = '\0';
+        }
+		tmp = ft_strjoin(str[fd], buff);
+		free(str[fd]);
+		str[fd] = tmp;
+		if (strchr(buff, '\n'))
+			break;
+	}
+	if (ret < 0)
+		return (-1);
+	if (ret == 0 && str[fd] == NULL)
+	{
+		*line = malloc(1);
+		**line = '\0';
+		return (0);
+	}
+	return (ft_fill_it(str, fd, ret, line));
+}
+

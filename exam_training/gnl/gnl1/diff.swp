@@ -1,0 +1,56 @@
+1c1
+< int         get_next_line(int fd, char **line)
+---
+> int                     get_next_line(int fd, char **line)
+3,8c3,8
+<     char	*str[255];
+< 	char	buff[BUFFER_SIZE + 1];
+< 	char	*tmp;
+< 	int		ret;
+< 
+< 	if (BUFFER_SIZE < 1 || fd < 0 || line == NULL)
+---
+>     static char         *str[255];
+>     char                *tmp;
+>     char                buff[BUFFER_SIZE + 1];
+>     int                 ret;
+> 	
+> 	if (fd < 0 || line == NULL || BUFFER_SIZE < 1)
+10,13c10,13
+< 	while ((ret = read(fd, buff, BUFFER_SIZE)) > 0)
+< 	{
+< 		buff[ret] = '\0';
+< 		if (!str[fd])
+---
+>     while ((ret = read(fd, buff, BUFFER_SIZE)) > 0)
+>     {
+>         buff[ret] = '\0';
+>         if (!str[fd])
+15d14
+< 		getchar();
+23,34c22,33
+< 		if (strchr(buff, '\n'))
+< 			break;
+< 	}
+< 	if (ret < 0)
+< 		return (-1);
+< 	if (ret == 0 && str[fd] == NULL)
+< 	{
+< 		*line = malloc(1);
+< 		**line = '\0';
+< 		return (0);
+< 	}
+< 	return (ft_fill_it(str, fd, ret, line));
+---
+> 		if (ft_strchr(buff, '\n'))
+> 			break ;
+>     }
+>     if (ret < 0)
+>         return (-1);
+>     if (ret == 0 && !str[fd])
+>     {
+>         *line = malloc(1);
+>         **line = '\0';
+>         return (0);
+>     }
+>     return (ft_fill_it(str, fd, ret, line));
