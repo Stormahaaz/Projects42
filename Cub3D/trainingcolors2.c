@@ -6,7 +6,7 @@
 /*   By: gupatric <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 12:26:08 by gupatric          #+#    #+#             */
-/*   Updated: 2021/02/05 15:59:42 by gupatric         ###   ########.fr       */
+/*   Updated: 2021/02/10 15:37:16 by gupatric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,11 @@ int		ft_get_opposite(int color)
 	return (0 << 24 | r << 16 | g << 8 | b); 
 }
 
-int		main(int ac, char **av)
+// Part using functions to make a program
+
+/*int		main(int ac, char **av)
 {
-	ft_printf("%i\n", (unsigned char)0);
-/*	if (ac != 2 && ac != 7)
+	if (ac != 2 && ac != 7)
 	{
 		ft_printf("RTFM !");
 		return (0);
@@ -108,6 +109,5 @@ int		main(int ac, char **av)
 	else if (!ft_memcmp(av[6], "opposite", ft_strlen("opposite")))
 		ft_printf("opposite = %X\n", trgb_opposite);
 	else if (!ft_memcmp(av[6], "RGB CODE", ft_strlen("RGB CODE")))
-*/
 	return (0);
-}
+}*/

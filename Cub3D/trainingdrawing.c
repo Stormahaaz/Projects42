@@ -6,7 +6,7 @@
 /*   By: gupatric <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 14:52:06 by gupatric          #+#    #+#             */
-/*   Updated: 2021/02/05 15:59:45 by gupatric         ###   ########.fr       */
+/*   Updated: 2021/02/10 15:37:13 by gupatric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,49 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*) dst = color;
 }
 
+int				ft_rainbow(int colors)
+{
+	int			cr = ft_get_r(colors);
+	int			cg = ft_get_g(colors);
+	int			cb = ft_get_b(colors);
+
+	if (cr == 255 && cb == 0)
+	{
+		cg++;
+		if (cg == 255)
+			cr--;
+	}
+	if (cg == 255 && cb == 0)
+	{
+		cr--;
+		if (cr == 0)
+			cb++;
+	}
+	if (cg == 255 && cr == 0)
+	{
+		cb++;
+		if (cb == 255)
+			cg--;
+	}
+	if (cb == 255 && cr == 0)
+	{
+		cg--;
+		if (cg == 0)
+			cr++;
+	}
+	if (cb == 255 && cg == 0)
+	{
+		cr++;
+		if (cr == 255)
+			cb--;
+	}
+	if (cr == 255 && cg == 0)
+	{
+		cb--;
+	}
+		return (0 << 24 | cr << 16 | cg << 8 | cb);
+}
+
 int				main()
 {
 	void 	*mlx;
@@ -38,26 +81,23 @@ int				main()
 	t_data	img;
 	int		i = 0;
 	int		y;
-	int		colors = 0x00FF0000;
+	double	shader = 0;
 
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 1920, 1080, "Mlx train");
 	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_length, &img.endian);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
 	while (i < 1080)
 	{
+		int		colors = 0x00FF0000;
 		y = 0;
 		while (y < 1920)
 		{
-			my_mlx_pixel_put(&img, y, i, colors);
+			my_mlx_pixel_put(&img, y, i, ft_add_shade(shader, colors));
+			colors = ft_rainbow(colors);
 			y++;
-			cr = ft_get_r(colors);
-			cb = ft_get_g(colors);
-			cg = ft_get_b(colors);
-			if ((unsigned char)cr > 255 
-			colors = 
 		}
+		shader = 0.0009259 * i;
 		i++;
 	}
 	mlx_put_image_to_window(mlx, win, img.img, 0, 0);
