@@ -41,5 +41,8 @@ void	ft_rotate(t_lint **list);
 t_lint	*ft_lstnew_int(int content);
 void	ft_lstadd_back_int(t_lint **alst, t_lint *new);
 void	ft_lstpr_int(t_lint **toprint);
+void	ft_rev_rotate(t_lint **list);
+int		ft_count_int(t_lint **list);
+
 
 #endif

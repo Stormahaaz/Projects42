@@ -3,7 +3,8 @@ PRINTF  = ./printf
 SRCS 	= ./srcs/stacks_tools/ft_build_stacks.c \
 push_swap.c \
 ./srcs/stacks_op/ft_stacks_op.c \
-./srcs/stacks_tools/ft_lstft_review.c
+./srcs/stacks_tools/ft_lstft_review.c \
+./srcs/stacks_tools/ft_get_stacks_info.c
 
 HEADER 	= include
 CC 		= gcc -Wall -Wextra -Werror

@@ -45,5 +45,33 @@ void	ft_rotate(t_lint **list)
 	while (elem->next != NULL)
 		elem = elem->next;
 	elem->next = tmp;
-	
+}
+
+void	ft_rev_rotate(t_lint **list)
+{
+	t_lint	*elem;
+	int		tmp;
+	int		i;
+	int		j;
+
+	i = ft_count_int(list) - 1;
+	if (*list == NULL || (*list)->next == NULL)
+		return ;
+	elem = *list;
+	while (elem->next)
+		elem = elem->next;
+	tmp = elem->content;
+	while (i)
+	{
+		elem = *list;
+		j = 1;
+		while (j < i)
+		{
+			elem = elem->next;
+			j++;
+		}
+		elem->next->content = elem->content;
+		i--;
+	}
+	(*list)->content = tmp;
 }
