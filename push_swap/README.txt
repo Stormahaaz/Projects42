@@ -1,0 +1,1 @@
+This project is an approach of the concept of the algorithmic complexity, at this stage i can handle a stack of five integer, but the rest of the project is not ended cause my scolarity took it end at this moment.
